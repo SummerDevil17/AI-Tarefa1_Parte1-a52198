@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class UpdateMove : MonoBehaviour
 {
-    void Update()
+    [SerializeField] float speed = 2f;
+
+    void LateUpdate()
     {
-        this.transform.Translate(0, 0, 0.01f);
+        this.transform.Translate(0, 0, Time.deltaTime * speed);
     }
 }
