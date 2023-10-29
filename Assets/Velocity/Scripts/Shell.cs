@@ -6,15 +6,19 @@ using UnityEngine;
 public class Shell : MonoBehaviour
 {
     public GameObject explosion;
-    [SerializeField] float speed = 5f;
 
+    float speed = 0f;
+    float ySpeed = 0f;
     float mass = 10f;
-    float force = 1000f;
+    float force = 2f;
+    float drag = 1f;
+    float gravity = -9.8f;
+    float gravityAcceleration;
     float acceleration;
 
     void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.tag == "tank")
+        if (col.gameObject.tag == "tank" || col.gameObject.tag == "Ground")
         {
             GameObject exp = Instantiate(explosion, this.transform.position, Quaternion.identity);
             Destroy(exp, 0.5f);
@@ -25,15 +29,17 @@ public class Shell : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        acceleration = force / mass;
+        speed += acceleration * 1f;
 
+        gravityAcceleration = gravity / mass;
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
-        acceleration = force / mass;
-        speed += acceleration * Time.deltaTime;
-
-        this.transform.Translate(0, 0, Time.deltaTime * speed);
+        speed *= (1 - Time.deltaTime * drag);
+        ySpeed += gravityAcceleration * Time.deltaTime;
+        this.transform.Translate(0, ySpeed, speed);
     }
 }
