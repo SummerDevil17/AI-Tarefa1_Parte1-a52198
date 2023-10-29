@@ -681,6 +681,7 @@ MonoBehaviour:
   bullet: {fileID: 9162047389006064978, guid: 2b89ef4a2d0394f45a754dc40a856eb9, type: 3}
   turret: {fileID: 353261112}
   enemy: {fileID: 620903246}
+  turretBase: {fileID: 942564069}
 --- !u!1001 &1354003426666338538
 PrefabInstance:
   m_ObjectHideFlags: 0
