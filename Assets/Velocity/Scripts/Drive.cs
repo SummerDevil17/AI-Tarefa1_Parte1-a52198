@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Drive : MonoBehaviour
 {
-    public float speed = 10.0f;
-    public float rotationSpeed = 100.0f;
+    [SerializeField] float speed = 10.0f;
+    [SerializeField] float rotationSpeed = 100.0f;
+    [SerializeField] Transform turretTrans;
+    [SerializeField] Transform gunTrans;
+    [SerializeField] GameObject shellObj;
 
     void Update()
     {
@@ -24,5 +27,9 @@ public class Drive : MonoBehaviour
 
         // Rotate around our y-axis
         transform.Rotate(0, rotation, 0);
+
+        if (Input.GetKey(KeyCode.T)) { turretTrans.RotateAround(turretTrans.position, turretTrans.right, -2f); }
+        else if (Input.GetKey(KeyCode.G)) { turretTrans.RotateAround(turretTrans.position, turretTrans.right, 2f); }
+        else if (Input.GetKeyDown(KeyCode.B)) { Instantiate(shellObj, gunTrans.position, gunTrans.rotation); }
     }
 }
