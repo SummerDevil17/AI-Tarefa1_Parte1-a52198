@@ -10,6 +10,8 @@ public class Drive : MonoBehaviour
     [SerializeField] Transform gunTrans;
     [SerializeField] GameObject shellObj;
 
+    public float Speed { get => speed; }
+
     void Update()
     {
         // Get the horizontal and vertical axis.

@@ -6,6 +6,8 @@ public class MoveShell : MonoBehaviour
 {
     [SerializeField] float speed = 1f;
 
+    public float Speed { get => speed; }
+
     // Update is called once per frame
     void Update()
     {
