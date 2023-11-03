@@ -6,6 +6,7 @@ public class Flock : MonoBehaviour
 {
     float speed;
     GameObject[] fishNeighbours;
+    bool turning = false;
 
     void Start()
     {
@@ -15,14 +16,28 @@ public class Flock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Random.Range(0, 100) < 20)
-        {
-            speed = Random.Range(FlockManager.instance.fishMinSpeed, FlockManager.instance.fishMaxSpeed);
-        }
+        Bounds swimBounds = new Bounds(FlockManager.instance.transform.position,
+                                        FlockManager.instance.swimLimits * 2);
+        if (!swimBounds.Contains(transform.position)) { turning = true; }
+        else { turning = false; }
 
-        if (Random.Range(0, 100) < 30)
+        if (turning)
         {
-            ApplyFlockingRules();
+            Vector3 direction = FlockManager.instance.transform.position - transform.position;
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction),
+                                                FlockManager.instance.rotationSpeed * Time.deltaTime);
+        }
+        else
+        {
+            if (Random.Range(0, 100) < 20)
+            {
+                speed = Random.Range(FlockManager.instance.fishMinSpeed, FlockManager.instance.fishMaxSpeed);
+            }
+
+            if (Random.Range(0, 100) < 30)
+            {
+                ApplyFlockingRules();
+            }
         }
         this.transform.Translate(0, 0, speed * Time.deltaTime);
     }
