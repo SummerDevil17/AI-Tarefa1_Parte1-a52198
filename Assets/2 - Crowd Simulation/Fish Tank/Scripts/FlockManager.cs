@@ -9,7 +9,7 @@ public class FlockManager : MonoBehaviour
 
     [SerializeField] GameObject[] fishPrefabs;
     [SerializeField] int numberOfFish = 20;
-    [SerializeField] GameObject[] fishArray;
+    public GameObject[] fishArray;
     [SerializeField] Vector3 swimLimits = new Vector3(5, 5, 5);
 
     [Header("Fish Settings")]
@@ -18,6 +18,10 @@ public class FlockManager : MonoBehaviour
     [Range(0f, 5f)]
     public float fishMaxSpeed = 2f;
 
+    [Range(1f, 10f)]
+    public float neighbourDistance = 5f;
+    [Range(1f, 5f)]
+    public float rotationSpeed = 2f;
 
     void Start()
     {
