@@ -15,7 +15,15 @@ public class Flock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ApplyFlockingRules();
+        if (Random.Range(0, 100) < 20)
+        {
+            speed = Random.Range(FlockManager.instance.fishMinSpeed, FlockManager.instance.fishMaxSpeed);
+        }
+
+        if (Random.Range(0, 100) < 30)
+        {
+            ApplyFlockingRules();
+        }
         this.transform.Translate(0, 0, speed * Time.deltaTime);
     }
 
@@ -51,8 +59,9 @@ public class Flock : MonoBehaviour
 
         if (groupSize > 0)
         {
-            vCenter /= groupSize;
+            vCenter = vCenter / groupSize + (FlockManager.instance.goalPosition - transform.position);
             speed = gSpeed / groupSize;
+            if (speed > FlockManager.instance.fishMaxSpeed) { speed = FlockManager.instance.fishMaxSpeed; }
 
             Vector3 direction = (vCenter + vAvoid) - transform.position;
             if (direction != Vector3.zero)

@@ -252,8 +252,9 @@ MonoBehaviour:
   numberOfFish: 20
   fishArray: []
   swimLimits: {x: 5, y: 5, z: 5}
-  fishMinSpeed: 1
-  fishMaxSpeed: 2
+  goalPosition: {x: 0, y: 0, z: 0}
+  fishMinSpeed: 0.4
+  fishMaxSpeed: 1.8
   neighbourDistance: 10
   rotationSpeed: 2
 --- !u!4 &963765893
