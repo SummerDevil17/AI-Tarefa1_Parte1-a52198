@@ -18,7 +18,13 @@ public class AIControl : MonoBehaviour
         goalLocations = GameObject.FindGameObjectsWithTag("Goal");
 
         SetRandomDestination();
+
         animator.SetTrigger("isWalking");
+        animator.SetFloat("wOffset", Random.Range(0f, 1f));
+
+        float randomSpeedMultiplier = Random.Range(0.5f, 2f);
+        animator.SetFloat("speedMult", randomSpeedMultiplier);
+        agent.speed *= randomSpeedMultiplier;
     }
 
     void Update()
