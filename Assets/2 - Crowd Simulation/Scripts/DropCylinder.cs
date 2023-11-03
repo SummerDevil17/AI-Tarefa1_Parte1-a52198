@@ -24,10 +24,10 @@ public class DropCylinder : MonoBehaviour
             {
                 Instantiate(obstacle, hitInfo.point, obstacle.transform.rotation);
 
-                /*foreach (GameObject agent in agents)
+                foreach (GameObject agent in agents)
                 {
-                    agent
-                }*/
+                    agent.GetComponent<AIControl>().DetectNewObstacle(hitInfo.point);
+                }
             }
         }
     }
