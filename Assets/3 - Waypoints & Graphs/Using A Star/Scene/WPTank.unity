@@ -978,8 +978,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1157254855}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0.37989828, y: -0.1867254, z: 0.078590035, w: 0.9025711}
+  m_LocalPosition: {x: 25.125748, y: 36.78219, z: -51.57755}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1223,7 +1223,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4823948580163772, guid: 650ea2e5f9c3b4ae4aa6e7fdf6cf157b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -19.7
+      value: -21.08
       objectReference: {fileID: 0}
     - target: {fileID: 4823948580163772, guid: 650ea2e5f9c3b4ae4aa6e7fdf6cf157b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1231,7 +1231,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4823948580163772, guid: 650ea2e5f9c3b4ae4aa6e7fdf6cf157b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.8
+      value: 8.93
       objectReference: {fileID: 0}
     - target: {fileID: 4823948580163772, guid: 650ea2e5f9c3b4ae4aa6e7fdf6cf157b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1637,10 +1637,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 819116efca59bb943bbb0e31037788f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WPManagerReference: {fileID: 0}
+  WPManagerReference: {fileID: 1158665840}
   speed: 10
   rotationSpeed: 3
-  accuracy: 1
+  accuracy: 3
 --- !u!1001 &1989844588
 PrefabInstance:
   m_ObjectHideFlags: 0
