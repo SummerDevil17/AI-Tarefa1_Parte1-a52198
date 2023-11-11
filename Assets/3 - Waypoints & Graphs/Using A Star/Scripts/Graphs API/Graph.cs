@@ -51,6 +51,8 @@ public class Graph
 
     public bool AStar(GameObject startObj, GameObject endObj)
     {
+        if (startObj == endObj) { pathList.Clear(); return false; }
+
         Node start = FindNode(startObj);
         Node end = FindNode(endObj);
 

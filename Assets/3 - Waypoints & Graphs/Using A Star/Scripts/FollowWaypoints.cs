@@ -23,8 +23,6 @@ public class FollowWaypoints : MonoBehaviour
         waypoints = WPManagerReference.waypoints;
         graph = WPManagerReference.graph;
         currentNode = waypoints[currentWaypointIndex];
-
-        Invoke("GoToRuin", 2f);
     }
 
     void LateUpdate()
@@ -61,7 +59,7 @@ public class FollowWaypoints : MonoBehaviour
         currentWaypointIndex = 0;
     }
 
-    public void GoToMill()
+    public void GoToFactory()
     {
         graph.AStar(currentNode, waypoints[11]);
         currentWaypointIndex = 0;
