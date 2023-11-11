@@ -7,6 +7,7 @@ public class FollowWP : MonoBehaviour
     public Transform[] waypoints;
 
     [SerializeField] float speed = 10f;
+    [SerializeField] float rotationSpeed = 10f;
 
     int currentWaypointIndex = 0;
 
@@ -24,7 +25,9 @@ public class FollowWP : MonoBehaviour
         if (currentWaypointIndex >= waypoints.Length)
         { currentWaypointIndex = 0; }
 
-        transform.LookAt(waypoints[currentWaypointIndex].position);
+        Quaternion lookAtRotation = Quaternion.LookRotation(waypoints[currentWaypointIndex].position - transform.position);
+
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookAtRotation, rotationSpeed * Time.deltaTime);
         transform.Translate(0, 0, speed * Time.deltaTime);
     }
 }
