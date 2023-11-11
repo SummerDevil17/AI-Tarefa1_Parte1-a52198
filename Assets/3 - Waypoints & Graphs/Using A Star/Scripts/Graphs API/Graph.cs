@@ -1,3 +1,5 @@
+using System.Net;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +8,7 @@ public class Graph
 {
     List<Edge> edges = new List<Edge>();
     List<Node> nodes = new List<Node>();
-    List<Node> pathsList = new List<Node>();
+    List<Node> pathList = new List<Node>();
 
     public Graph() { }
 
@@ -72,7 +74,8 @@ public class Graph
             Node currentNode = open[i];
 
             if (currentNode.GetObjID() == endObj)
-            {//ReconstructPath(start,end); 
+            {
+                ReconstructPath(start, end);
                 return true;
             }
             open.RemoveAt(i);
@@ -96,7 +99,7 @@ public class Graph
 
                 if (tentativeIsBetter)
                 {
-                    neighbourNode.cameFrom = currentNode;
+                    neighbourNode.previous = currentNode;
                     neighbourNode.g = tentativeGScore;
                     neighbourNode.h = DistanceH(currentNode, end);
                     neighbourNode.f = neighbourNode.g + neighbourNode.h;
@@ -104,6 +107,20 @@ public class Graph
             }
         }
         return false;
+    }
+
+    public void ReconstructPath(Node startNode, Node endNode)
+    {
+        pathList.Clear();
+        pathList.Add(endNode);
+
+        var previousNode = endNode.previous;
+        while (previousNode != startNode && previousNode != null)
+        {
+            pathList.Insert(0, previousNode);
+            previousNode = previousNode.previous;
+        }
+        pathList.Insert(0, startNode);
     }
 
     private float DistanceH(Node a, Node b)

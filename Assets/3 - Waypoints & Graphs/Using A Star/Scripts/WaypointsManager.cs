@@ -13,16 +13,23 @@ public struct Link
 
 public class WaypointsManager : MonoBehaviour
 {
-    public GameObject[] waypoints;
-    public Link[] links;
+    [SerializeField] GameObject[] waypoints;
+    [SerializeField] Link[] links;
+    [SerializeField] Graph graph = new();
 
-    // Start is called before the first frame update
     void Start()
     {
-        //Edge edge = new Edge();
+        if (waypoints.Length <= 0) { return; }
+
+        foreach (GameObject wp in waypoints) { graph.AddNode(wp); }
+        foreach (Link l in links)
+        {
+            graph.AddEdge(l.node1, l.node2);
+            if (l.linkDir == Link.Direction.BI) { graph.AddEdge(l.node2, l.node1); }
+        }
+
     }
 
-    // Update is called once per frame
     void Update()
     {
 

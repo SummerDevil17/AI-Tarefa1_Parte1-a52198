@@ -7,10 +7,9 @@ public class Node
     public List<Edge> edgeList = new List<Edge>();
     public Node path = null;
     GameObject objID;
-    public float xPos, yPos, zPos;
 
     public float f, g, h;
-    public Node cameFrom;
+    public Node previous;
 
     /// <summary>
     /// Creates a Node from a GameObject.
@@ -22,10 +21,6 @@ public class Node
     public Node(GameObject prefab)
     {
         objID = prefab;
-        xPos = prefab.transform.position.x;
-        yPos = prefab.transform.position.y;
-        zPos = prefab.transform.position.z;
-
         path = null;
     }
 
