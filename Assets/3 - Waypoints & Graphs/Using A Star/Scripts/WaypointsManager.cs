@@ -13,9 +13,9 @@ public struct Link
 
 public class WaypointsManager : MonoBehaviour
 {
-    [SerializeField] GameObject[] waypoints;
+    public GameObject[] waypoints;
     [SerializeField] Link[] links;
-    [SerializeField] Graph graph = new();
+    public Graph graph = new();
 
     void Start()
     {
@@ -33,5 +33,21 @@ public class WaypointsManager : MonoBehaviour
     void Update()
     {
 
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+
+        foreach (Link l in links)
+        {
+            Gizmos.DrawLine(l.node1.transform.position, l.node2.transform.position);
+            if (l.linkDir == Link.Direction.BI)
+            {
+                Gizmos.color = Color.red;
+                Gizmos.DrawLine(l.node2.transform.position, l.node1.transform.position);
+            }
+            Gizmos.color = Color.blue;
+        }
     }
 }
